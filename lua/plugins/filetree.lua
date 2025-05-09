@@ -6,7 +6,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 	keys = {
-		{"<leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true }, desc = "open fileTree"},
+		{"<leader>e", function() require("nvim-tree.api").tree.toggle() end, { noremap = true, silent = true }, desc = "open fileTree"},
 	},
 	config = function()
 		require("nvim-tree").setup({
