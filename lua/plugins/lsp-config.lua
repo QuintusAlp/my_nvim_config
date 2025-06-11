@@ -12,6 +12,8 @@ return{
 				ensure_installed = {
 					"lua_ls",
 					"clangd",
+					"ast-grep",
+					"tailwindcss-language-server"
 				}
 			})
 		end
@@ -25,6 +27,9 @@ return{
 				capabilities = capabilities
 			})
 			lspconfig.clangd.setup({
+				capabilities = capabilities
+			})
+			lspconfig.ast_grep.setup({
 				capabilities = capabilities
 			})
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})

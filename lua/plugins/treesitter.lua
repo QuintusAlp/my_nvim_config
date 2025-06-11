@@ -3,10 +3,18 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		config = function()
+			-- Add filetype detection for .tpp files
+			vim.filetype.add({
+				extension = {
+					tpp = 'cpp',
+				},
+			})
+
 			local config = require("nvim-treesitter.configs")
 			config.setup({
 				ensure_installed = {
 					"c",
+					"cpp",
 					"lua",
 					"vim",
 					"vimdoc",
