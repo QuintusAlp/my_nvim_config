@@ -2,7 +2,11 @@ return{
 	{
 		"williamboman/mason.nvim",
 		config = function()
-			require("mason").setup()
+			require("mason").setup({
+				ensure_installed = {
+					"typescript-language-server"
+				}
+			})
 		end
 	},
 	{
@@ -12,8 +16,8 @@ return{
 				ensure_installed = {
 					"lua_ls",
 					"clangd",
-					"ast-grep",
-					"tailwindcss-language-server"
+					"ts_ls",
+					"tailwindcss"
 				}
 			})
 		end
@@ -29,7 +33,10 @@ return{
 			lspconfig.clangd.setup({
 				capabilities = capabilities
 			})
-			lspconfig.ast_grep.setup({
+			lspconfig.ts_ls.setup({
+				capabilities = capabilities
+			})
+			lspconfig.tailwindcss.setup({
 				capabilities = capabilities
 			})
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
